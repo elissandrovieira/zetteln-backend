@@ -1,9 +1,18 @@
 package com.zetteln.backend.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_users")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class User {
 
     @Id
@@ -13,36 +22,19 @@ public class User {
     private String email;
     private String passwordHash;
 
-    public User() {
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vault> vaults;
 
-    public User(String name, String email, String passwordHash) {
-        this.name = name;
-        this.email = email;
-        this.passwordHash = passwordHash;
-    }
+    @Column(name = "created_at", updatable = false, insertable = false)
+    private LocalDateTime createdAt;
 
-    public String getName() {
-        return name;
-    }
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
-    public String getEmail() {
-        return email;
-    }
 
-    public String getPasswordHash() {
-        return passwordHash;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
     }
 }
