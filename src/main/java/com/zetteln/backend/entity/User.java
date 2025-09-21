@@ -23,10 +23,8 @@ public class User {
     @Column(unique = true)
     private String email;
 
+    @Column(name = "password_hash")
     private String passwordHash;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Vault> vaults;
 
     @Column(name = "created_at", updatable = false, insertable = false)
     private LocalDateTime createdAt;
@@ -34,6 +32,8 @@ public class User {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Vault> vaults;
 
 
     @PreUpdate
