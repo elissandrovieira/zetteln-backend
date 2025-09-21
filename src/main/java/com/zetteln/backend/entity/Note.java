@@ -1,4 +1,4 @@
-package com.zetteln.backend.model;
+package com.zetteln.backend.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
