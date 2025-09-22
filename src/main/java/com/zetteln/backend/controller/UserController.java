@@ -1,29 +1,36 @@
 package com.zetteln.backend.controller;
 
+import com.zetteln.backend.entity.User;
+import com.zetteln.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping
+@RequestMapping("/users")
 public class UserController {
 
-    @GetMapping("/greetings")
-    public String Greetings() {return "This is my first message in this route!";}
+    private UserService userService;
 
-    //ADD USER
-    @PostMapping("/users")
-    public String CreateUser() { return "User created.";}
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     //SHOW USERS
-    @GetMapping("/users")
-    public String GetAllUsers() { return "All users.";}
+    @GetMapping
+    public List<User> GetAllUsers() { return userService.GetAllUsers(); }
+
+    //ADD USER
+    @PostMapping
+    public String CreateUser() { return "User created.";}
 
     //SEARCH USER BY ID
 
     //UPDATE USER DATA
-    @PutMapping("/userid")
+    @PutMapping("/id")
     public String UpdateUser() { return "User updated";}
 
     //DELETE USER
-    @DeleteMapping("/userid")
+    @DeleteMapping("/id")
     public String DeleteUser() { return "User deleted";}
 }
