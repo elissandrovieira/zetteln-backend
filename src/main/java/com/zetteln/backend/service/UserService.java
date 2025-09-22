@@ -33,11 +33,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User UpdateUser(Long id, User updateUser) {
-        if (userRepository.existsById(id)) {
-            updateUser.setId(id);
-            return userRepository.save(updateUser);
-        }
-        return null;
+    public User UpdateUser(Long id, User user) {
+        return userRepository.existsById(id) ? userRepository.save(user) : null;
     }
 }

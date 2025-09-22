@@ -28,4 +28,20 @@ public class NoteController {
             return noteService.GetByUserAndVaultId(userId, vaultId);
         return noteService.GetByUserId(userId);
     }
+
+    @PostMapping
+    public Note CreateNote(@RequestBody Note note) {
+        return noteService.CreateNote(note);
+    }
+
+    @PutMapping("/{id}")
+    public Note UpdateNote(@PathVariable Long id, @RequestBody Note note) {
+        return noteService.UpdateNote(id, note);
+    }
+
+    @DeleteMapping("/{id}")
+    public String DeleteNote(@PathVariable Long id) {
+        noteService.DeleteNote(id);
+        return "Note deleted.";
+    }
 }

@@ -28,4 +28,16 @@ public class NoteService {
     public List<Note> GetByUserAndVaultId(Long userId, Long vaultId) {
         return noteRepository.findByVault_User_IdAndVault_Id(userId, vaultId);
     }
+
+    public Note CreateNote(Note note) {
+        return noteRepository.save(note);
+    }
+
+    public void DeleteNote(Long id) {
+        noteRepository.deleteById(id);
+    }
+
+    public Note UpdateNote(Long id, Note note) {
+        return noteRepository.existsById(id) ? noteRepository.save(note) : null;
+    }
 }
