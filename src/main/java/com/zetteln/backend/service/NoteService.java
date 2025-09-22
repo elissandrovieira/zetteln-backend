@@ -13,6 +13,7 @@ public class NoteService {
     private NoteRepository noteRepository;
 
     public NoteService(NoteRepository noteRepository) {
+
         this.noteRepository = noteRepository;
     }
 
@@ -22,5 +23,9 @@ public class NoteService {
 
     public List<Note> GetByUserId(Long userId) {
         return noteRepository.findByVault_User_Id(userId);
+    }
+
+    public List<Note> GetByUserAndVaultId(Long userId, Long vaultId) {
+        return noteRepository.findByVault_User_IdAndVault_Id(userId, vaultId);
     }
 }

@@ -16,29 +16,29 @@ public class UserController {
         this.userService = userService;
     }
 
-    //SHOW USERS
     @GetMapping
     public List<User> GetAllUsers() {
         return userService.GetAllUsers();
     }
 
-    //SEARCH USER BY ID
     @GetMapping("/{id}")
     public User GetById(@PathVariable Long id) {
         return userService.GeById(id);
     }
 
-    //ADD USER
     @PostMapping
     public User CreateUser(@RequestBody User user) {
         return userService.CreateUser(user);
     }
 
-    //UPDATE USER DATA
-    @PutMapping("/id")
-    public String UpdateUser() { return "User updated";}
+    @PutMapping("/{id}")
+    public User UpdateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.UpdateUser(id, user);
+    }
 
-    //DELETE USER
-    @DeleteMapping("/id")
-    public String DeleteUser() { return "User deleted";}
+    @DeleteMapping("/{id}")
+    public String DeleteUser(@PathVariable Long id) {
+        userService.DeleteUser(id);
+        return "User deleted.";
+    }
 }

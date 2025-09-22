@@ -2,10 +2,7 @@ package com.zetteln.backend.controller;
 
 import com.zetteln.backend.entity.Note;
 import com.zetteln.backend.service.NoteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +23,9 @@ public class NoteController {
     }
 
     @GetMapping("/{userId}")
-    public List<Note> GetByUserId(@PathVariable Long userId) {
+    public List<Note> GetByUserId(@PathVariable Long userId, @RequestParam Long vaultId) {
+        if (vaultId != null)
+            return noteService.GetByUserAndVaultId(userId, vaultId);
         return noteService.GetByUserId(userId);
     }
 }
