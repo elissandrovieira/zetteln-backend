@@ -23,5 +23,21 @@ public class VaultService {
         return vaultRepository.findByUser_Id(userId);
     }
 
+    public Vault CreateVault(Vault vault) {
+        return vaultRepository.save(vault);
+    }
+
+    public Vault UpdateVault(Long id, Vault vault) {
+        if (vaultRepository.existsById(id)) {
+            vault.setId(id);
+            return vaultRepository.save(vault);
+        }
+        return null;
+    }
+
+    public void DeleteVault(Long id) {
+        vaultRepository.deleteById(id);
+    }
+
 
 }

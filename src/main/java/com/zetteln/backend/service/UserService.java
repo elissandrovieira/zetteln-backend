@@ -34,6 +34,10 @@ public class UserService {
     }
 
     public User UpdateUser(Long id, User user) {
-        return userRepository.existsById(id) ? userRepository.save(user) : null;
+        if (userRepository.existsById(id)) {
+            user.setId(id);
+            return userRepository.save(user);
+        }
+        return null;
     }
 }

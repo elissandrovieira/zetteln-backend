@@ -33,11 +33,15 @@ public class NoteService {
         return noteRepository.save(note);
     }
 
-    public void DeleteNote(Long id) {
-        noteRepository.deleteById(id);
+    public Note UpdateNote(Long id, Note note) {
+        if (noteRepository.existsById(id)){
+            note.setId(id);
+            return noteRepository.save(note);
+        }
+        return null;
     }
 
-    public Note UpdateNote(Long id, Note note) {
-        return noteRepository.existsById(id) ? noteRepository.save(note) : null;
+    public void DeleteNote(Long id) {
+        noteRepository.deleteById(id);
     }
 }

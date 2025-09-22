@@ -2,10 +2,7 @@ package com.zetteln.backend.controller;
 
 import com.zetteln.backend.entity.Vault;
 import com.zetteln.backend.service.VaultService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,20 @@ public class VaultController {
         return vaultService.GetByUserId(userId);
     }
 
+    @PostMapping
+    public Vault CreateVault(@RequestBody Vault vault) {
+        return vaultService.CreateVault(vault);
+    }
+
+    @PutMapping("/{id}")
+    public Vault UpdateVault(@PathVariable Long id, @RequestBody Vault vault) {
+        return vaultService.UpdateVault(id, vault);
+    }
+
+    @DeleteMapping("/{id}")
+    public String DeleteVault(@PathVariable Long id) {
+        vaultService.DeleteVault(id);
+        return "Vault deleted";
+    }
 
 }
