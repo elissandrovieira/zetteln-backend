@@ -1,5 +1,6 @@
 package com.zetteln.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +30,7 @@ public class Vault {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "vault", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Note> notes;
 
 }
