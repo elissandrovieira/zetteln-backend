@@ -15,5 +15,13 @@ public class VaultService {
         this.vaultRepository = vaultRepository;
     }
 
-    public List<Vault> GetVault () { return vaultRepository.findAll(); }
+    public List<Vault> GetAll() {
+        return vaultRepository.findAll();
+    }
+
+    public List<Vault> GetByUserId(Long userId) {
+        return vaultRepository.findByUser_Id(userId);
+    }
+
+
 }

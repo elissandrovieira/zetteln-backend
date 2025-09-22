@@ -5,6 +5,7 @@ import com.zetteln.backend.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class NoteService {
@@ -15,5 +16,11 @@ public class NoteService {
         this.noteRepository = noteRepository;
     }
 
-    public List<Note> GetAll() { return noteRepository.findAll(); }
+    public List<Note> GetAll() {
+        return noteRepository.findAll();
+    }
+
+    public List<Note> GetByUserId(Long userId) {
+        return noteRepository.findByVault_User_Id(userId);
+    }
 }

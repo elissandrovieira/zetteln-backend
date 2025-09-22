@@ -18,13 +18,21 @@ public class UserController {
 
     //SHOW USERS
     @GetMapping
-    public List<User> GetAllUsers() { return userService.GetAllUsers(); }
+    public List<User> GetAllUsers() {
+        return userService.GetAllUsers();
+    }
+
+    //SEARCH USER BY ID
+    @GetMapping("/{id}")
+    public User GetById(@PathVariable Long id) {
+        return userService.GeById(id);
+    }
 
     //ADD USER
     @PostMapping
-    public String CreateUser() { return "User created.";}
-
-    //SEARCH USER BY ID
+    public User CreateUser(@RequestBody User user) {
+        return userService.CreateUser(user);
+    }
 
     //UPDATE USER DATA
     @PutMapping("/id")
