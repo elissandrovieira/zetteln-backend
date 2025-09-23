@@ -33,6 +33,11 @@ public class Note {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @PrePersist
+    public void prePersist() {
+        updatedAt = LocalDateTime.now();
+    }
+
     @PreUpdate
     public void preUpdate() {
         updatedAt = LocalDateTime.now();
