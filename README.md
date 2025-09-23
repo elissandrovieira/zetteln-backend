@@ -2,6 +2,8 @@
 
 Zetteln is a lightweight and efficient Markdown reader backend designed to power your note-taking applications. It provides a robust API to fetch, manage, and serve Markdown files seamlessly.
 
+---
+
 ## Features
 
 - Serve Markdown files as JSON.
@@ -42,3 +44,16 @@ mvn spring-boot:run
 - DELETE /users/{id} – Delete a user
 
 *(Similar endpoints exist for managing vaults and users.)*
+
+## Next Steps
+
+- Add DTOs and mappers for Vaults and Notes.
+- Implement ResponseEntity for Vault and Notes endpoints.
+- Add authentication for users making requests.
+- Add input validation and error handling.
+- Implement logging for easier debugging and monitoring.
+- Write unit and integration tests to ensure reliability.
+- Add API documentation using Swagger for easier frontend integration.
+
+---
+Thank you for checking out Zetteln Backend. Enjoy exploring and organizing your Markdown notes!
