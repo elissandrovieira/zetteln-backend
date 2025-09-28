@@ -56,4 +56,4 @@ mvn spring-boot:run
 - Add API documentation using Swagger for easier frontend integration.
 
 ---
-Thank you for checking out Zetteln Backend. Enjoy exploring and organizing your Markdown notes!
+Thank you for checking out Zetteln Backend.
